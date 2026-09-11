@@ -149,7 +149,7 @@
 
           <div class="assumption-box">
             <span class="assumption-icon">i</span>
-            <p><strong>How to read this.</strong> The model uses the case’s per-channel price-test contribution, survey acceptance, and trailing funnel CAC / LTV benchmarks. The scenario range is a planning view, not a forecast.</p>
+            <p><strong>How to read this.</strong> The model uses the case’s price-test contribution, survey acceptance, COGS and trailing funnel CAC / LTV data. Payback assumes 10 cans per customer per month; the range is a planning view, not a forecast.</p>
           </div>
         </aside>
 
@@ -177,11 +177,50 @@
             </div>
           </div>
 
+          <article class="panel pricing-panel">
+            <div class="panel-heading compact">
+              <div>
+                <span class="section-index">02</span>
+                <h3>Price × channel simulator</h3>
+              </div>
+              <span class="mini-caption">Click a cell to focus</span>
+            </div>
+            <div class="pricing-panel-intro">
+              <p>See how each shelf price travels through the channel economics: net revenue to LUMEN, COGS, contribution and acceptance.</p>
+              <div class="selected-scenario" aria-live="polite">
+                <span class="selected-scenario-label">Focused scenario</span>
+                <strong id="selectedScenario">€2.19 · Retail / Grocery</strong>
+              </div>
+            </div>
+            <div class="price-matrix" id="priceMatrix" role="grid" aria-label="Contribution margin by price and channel"></div>
+            <div class="pricing-detail" aria-live="polite">
+              <div class="pricing-detail-head">
+                <div>
+                  <span class="mini-caption">Focused unit economics</span>
+                  <strong id="selectedChannel">Retail / Grocery</strong>
+                </div>
+                <span class="detail-price" id="selectedPrice">€2.19</span>
+              </div>
+              <div class="detail-metrics">
+                <div><span>Net to LUMEN</span><strong id="selectedNet">€1.25</strong></div>
+                <div><span>COGS / unit</span><strong id="selectedCogs">€0.62</strong></div>
+                <div><span>Contribution</span><strong id="selectedContribution">€0.63</strong></div>
+                <div><span>Contribution margin</span><strong id="selectedMargin">50.3%</strong></div>
+                <div><span>Acceptance signal</span><strong id="selectedAcceptance">51.7%</strong></div>
+                <div><span>CAC payback</span><strong id="selectedPayback">3.2 mo</strong></div>
+              </div>
+              <div class="margin-bridge" aria-label="Net revenue bridge from COGS to contribution">
+                <div class="bridge-track"><span class="bridge-cogs" id="bridgeCogs"></span><span class="bridge-contribution" id="bridgeContribution"></span></div>
+                <div class="bridge-legend"><span><i class="bridge-dot cogs"></i>COGS</span><span><i class="bridge-dot contribution"></i>Contribution</span><strong id="bridgeCaption">€1.25 net revenue / unit</strong></div>
+              </div>
+            </div>
+          </article>
+
           <div class="visual-grid">
             <article class="panel chart-panel">
               <div class="panel-heading compact">
                 <div>
-                  <span class="section-index">02</span>
+                  <span class="section-index">03</span>
                   <h3>Scenario runway</h3>
                 </div>
                 <div class="legend"><span><i class="legend-dot base"></i>Base</span><span><i class="legend-dot range"></i>Range</span></div>
@@ -195,7 +234,7 @@
             <article class="panel mix-panel">
               <div class="panel-heading compact">
                 <div>
-                  <span class="section-index">03</span>
+                  <span class="section-index">04</span>
                   <h3>Channel economics</h3>
                 </div>
                 <span class="mini-caption">Net / unit</span>
@@ -209,7 +248,7 @@
             <div class="recommendation-copy">
               <div class="panel-heading compact">
                 <div>
-                  <span class="section-index">04</span>
+                  <span class="section-index">05</span>
                   <h3>What we would do first</h3>
                 </div>
                 <span class="recommendation-tag">Working recommendation</span>
@@ -228,7 +267,7 @@
       </section>
 
       <footer class="footer-note">
-        <span>Source: LUMEN Germany Market Entry Brief · Exhibits 7, 8, 9 &amp; 11</span>
+        <span>Source: GitHub data/price_test_results.csv · cost_breakdown.csv · marketing_funnel_monthly.csv</span>
         <span>Prototype for decision support · Update assumptions as German learnings arrive</span>
       </footer>
     </main>
