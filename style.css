@@ -110,3 +110,36 @@ input[type="range"]::-webkit-slider-thumb { width: 14px; height: 14px; appearanc
 @media (max-width: 1050px) { .metric-grid { grid-template-columns: repeat(2, 1fr); }.metric-card.featured { grid-column: span 2; }.visual-grid { grid-template-columns: 1fr; } }
 @media (max-width: 800px) { .shell { padding: 25px 18px; }.topbar { padding-bottom: 28px; }.topbar-meta { display: none; }.product-stage { display: block; min-height: 125vh; margin: 0 -18px 55px; padding: 8vh 18px 0; }.stage-copy { position: relative; top: auto; height: auto; padding-top: 2vh; }.stage-copy h2 { font-size: 49px; }.stage-lede { font-size: 13px; }.stage-visual { height: 78vh; margin-top: -3vh; }.can { --can-scale: .88; }.stage-side-note { display: none; }.hero-grid, .dashboard-grid { grid-template-columns: 1fr; gap: 26px; }.hero-grid { margin-bottom: 29px; }.hero-copy h2 { font-size: 42px; }.hero-note { max-width: none; }.controls-panel { order: 2; }.recommendation-panel { grid-template-columns: 1fr; }.decision-score { display: grid; grid-template-columns: auto 1fr; column-gap: 13px; align-items: center; padding: 17px 0 0; border-top: 1px solid var(--line); border-left: 0; }.score-ring { grid-row: span 3; margin: 0; }.score-bar { margin: 0; }.footer-note { flex-direction: column; gap: 5px; } }
 @media (max-width: 480px) { .metric-grid { grid-template-columns: 1fr; }.metric-card.featured { grid-column: auto; }.metric-main { font-size: 25px; }.chart-panel, .mix-panel { padding: 17px; }.chart-wrap { height: 215px; }.recommendation-panel { padding: 19px; }.recommendation-copy h4 { font-size: 18px; } }
+
+/* Berlin audience decision: aggregate evidence and shared scenario. */
+.audience-panel { padding: 28px; margin-bottom: 28px; scroll-margin-top: 20px; }
+.audience-panel h2 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -.05em; margin: 6px 0; line-height: 1.15; }
+.audience-lede { max-width: 760px; line-height: 1.65; color: #4c5a51; }
+.audience-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 24px 0 16px; }
+.audience-kpis > div { padding: 18px; background: #edf3e6; border-radius: 12px; }
+.audience-kpis strong { display: block; font-size: 30px; letter-spacing: -.04em; }
+.audience-kpis small { font-size: 15px; }
+.audience-kpis span, .audience-caution { font-size: 12px; color: #4c5a51; line-height: 1.6; }
+.audience-decisions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.audience-decisions p, .audience-method p, .audience-scenario p { font-size: 13px; color: #4c5a51; line-height: 1.65; }
+.audience-label { font-family: 'DM Mono', monospace; font-size: 10px; color: #536a28; }
+.audience-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 26px 0; }
+.audience-charts figure { margin: 0; min-width: 0; }
+.audience-charts figcaption strong, .audience-charts figcaption span { display: block; }
+.audience-charts figcaption span { font-size: 11px; color: #4c5a51; margin: 5px 0 18px; }
+.audience-bar { display: grid; grid-template-columns: 1fr 42px; gap: 7px; margin: 14px 0; }
+.audience-bar > div:first-child { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 8px; font-size: 12px; }
+.audience-bar small { white-space: nowrap; color: #4c5a51; }
+.audience-bar b { font: 12px 'DM Mono', monospace; text-align: right; }
+.audience-track { background: #e4eae3; height: 12px; border-radius: 4px; overflow: hidden; }
+.audience-track span { display: block; height: 100%; background: #82948a; }
+.audience-primary .audience-track span { background: #607f26; }
+.audience-primary > div:first-child { font-weight: 800; }
+.audience-scenario { background: #edf3e6; padding: 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.audience-scenario small { color: #4c5a51; font-size: 11px; line-height: 1.6; }
+.audience-scenario button { border: 0; border-radius: 10px; padding: 14px 18px; background: var(--ink); color: white; cursor: pointer; font: inherit; font-size: 12px; flex-shrink: 0; }
+.audience-method { margin-top: 20px; }
+.audience-method summary { cursor: pointer; font-size: 13px; font-weight: 700; padding: 8px 0; }
+.audience-panel :focus-visible { outline: 3px solid #607f26; outline-offset: 4px; }
+@media (max-width: 800px) { .audience-decisions, .audience-charts { grid-template-columns: 1fr; }.audience-scenario { flex-direction: column; align-items: stretch; }.audience-panel .panel-heading { flex-wrap: wrap; } }
+@media (max-width: 480px) { .audience-panel { padding: 18px; }.audience-kpis { grid-template-columns: 1fr; gap: 8px; } }
