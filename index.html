@@ -255,6 +255,13 @@
         </section>
       </section>
 
+      <section class="timing-lab panel" id="timingLab">
+        <div class="timing-intro"><span class="section-index">05 / Timing lab</span><h3>Catch the demand wave.</h3><p>Timing is not a date on a calendar. It is a short window where seasonal demand is rising, the shelf is quieter, and LUMEN has enough runway to learn.</p><div class="confidence-note"><span>i</span><p><strong>Evidence strength: directional.</strong> 12 monthly seasonality / weather observations and 48 competitor-month observations support the signal, not a forecast.</p></div></div>
+        <div class="timing-control"><label for="launchMonth">Drag the launch window</label><input id="launchMonth" type="range" min="1" max="12" value="4"><div class="month-read"><strong id="launchMonthLabel">APRIL</strong><span id="launchSignal">Build momentum</span></div><div class="month-ticks"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div><div class="timing-chart-wrap"><svg id="timingChart" viewBox="0 0 620 150" role="img" aria-label="Monthly seasonality and temperature chart"></svg></div><div class="timing-legend"><span><i class="legend-line demand"></i>Demand index</span><span><i class="legend-line temp"></i>Temperature</span><span><i class="legend-promo"></i>Promo month</span></div></div>
+        <div class="timing-readout"><div class="timing-score"><span>WINDOW SCORE</span><strong id="timingScore">84</strong><small>/100</small></div><div class="timing-reasons" id="timingReasons"></div><div class="promo-detail" id="promoDetail"></div></div>
+        <div class="timing-verdict"><span class="verdict-mark" id="verdictMark">✓</span><div><span class="eyebrow">THE CALL</span><h4 id="timingVerdict">Launch in April: prime the market, then ride summer.</h4><p id="timingCopy">Demand is accelerating and competitors are not heavily discounting. This gives LUMEN a clean runway to build trial before the seasonal peak.</p><small class="timing-source">Sources: Exhibit 12 · <code>data/seasonality_and_weather.csv</code> (12 monthly observations); Exhibit 3 · <code>data/competitor_price_history.csv</code> (48 competitor-month observations).</small></div></div>
+      </section>
+
       <footer class="footer-note">
         <span>Source: GitHub data/price_test_results.csv · cost_breakdown.csv · marketing_funnel_monthly.csv</span>
         <span>Prototype for decision support · Update assumptions as German learnings arrive</span>
