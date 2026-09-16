@@ -42,8 +42,11 @@ const MARKETING = {
   'Paid Social': { cac: 45.55, ltv: 132.13 },
 };
 
+const state = { price: 2.19, mix: { dtc: 30, retail: 45, gym: 25 }, marketing: 'Influencer / Content' };
+const TIMING = [{m:'JAN',d:78,t:2,p:0,s:'Too early',c:'Cold demand and limited momentum make this a costly learning window.'},{m:'FEB',d:80,t:3,p:1,s:'Too early',c:'Demand is still below average; use this month for partner setup.'},{m:'MAR',d:88,t:7,p:0,s:'Build momentum',c:'Demand is turning upward and the competitive shelf is relatively calm.'},{m:'APR',d:98,t:11,p:0,s:'Build momentum',c:'Demand is accelerating and competitors are not heavily discounting.'},{m:'MAY',d:118,t:15,p:0,s:'Prime window',c:'The best balance of rising demand and a still-open competitive window.'},{m:'JUN',d:132,t:18,p:1,s:'Peak capture',c:'High demand, but launch execution must be ready to capture the peak.'},{m:'JUL',d:138,t:19,p:1,s:'Peak capture',c:'Maximum seasonal demand; a strong sales moment, with some promo noise.'},{m:'AUG',d:128,t:19,p:0,s:'Peak capture',c:'Demand remains high, but a late start leaves less time to build repeat.'},{m:'SEP',d:104,t:15,p:0,s:'Reset window',c:'A credible second window if summer preparation slips.'},{m:'OCT',d:90,t:11,p:0,s:'Reset window',c:'Lower demand makes this better for a controlled test than a full launch.'},{m:'NOV',d:82,t:6,p:0,s:'Too late',c:'A noisy, colder window; preserve runway and prepare for spring.'},{m:'DEC',d:84,t:3,p:0,s:'Too late',c:'Promotional pressure and holiday noise obscure the learning signal.'}];
+const PROMOS = {2:[['PulsUp','20%'],['Root & Rise','15%']],6:[['VoltFit','10%']],7:[['Mate Libre','20%']]};
 const ASSUMPTIONS = { cogs: 0.62, homeMargin: 30, unitsPerMonth: 10, baselineCustomers: 4900 };
-const state = { price: 2.19, mix: { dtc: 30, retail: 45, gym: 25 }, marketing: 'Influencer / Content', focusChannel: 'retail' };
+state.focusChannel = 'retail';
 const $ = (id) => document.getElementById(id);
 const euro = (value, digits = 2) => `€${value.toFixed(digits)}`;
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -173,9 +176,13 @@ function calculate() {
   renderChart(weightedContribution, monthlyCustomers);
 }
 
+function renderTiming(){const i=Number($('launchMonth').value)-1,d=TIMING[i],promos=PROMOS[i+1]||[];let score=Math.round(d.d*.55+(d.t>=15?18:d.t>=10?14:8)-(d.p*7)+(i>=2&&i<=7?8:0));score=Math.min(96,Math.max(45,score));$('launchMonthLabel').textContent=d.m;$('launchSignal').textContent=d.s;$('timingScore').textContent=score;$('timingReasons').innerHTML=`<b>${d.d}</b> demand index<br><b>${d.t}°C</b> average temperature<br><b>${d.p?'Promo noise':'Clear shelf'}</b>`;$('promoDetail').innerHTML=promos.length?`<strong>${promos.length} competitor promo${promos.length>1?'s':''}</strong>${promos.map(([name,discount])=>`<div class="promo-item"><span>${name}</span><span>−${discount}</span></div>`).join('')}`:`<span class="promo-clear">✓ No tracked promotions</span><br>Clearer test signal`;$('timingVerdict').textContent=i===3?'Launch in April: prime the market, then ride summer.':i===4?'Launch in May: the cleanest demand-to-readiness window.':i>=5&&i<=7?`Launch in ${d.m}: capture the peak, but execute without delay.`:i<3?'Hold for spring: prepare partners and build the demand engine.':`Use ${d.m} as a controlled test, then scale into the next demand wave.`;$('timingCopy').textContent=d.c;$('verdictMark').textContent=score>=75?'✓':score>=60?'~':'!';renderTimingChart(i);}
+function renderTimingChart(selected){const svg=$('timingChart'),w=620,h=150,l=20,r=8,t=10,b=25,x=i=>l+i*(w-l-r)/11,yD=v=>t+(138-v)/(138-70)*(h-t-b),yT=v=>t+(20-v)/20*(h-t-b),pts=(fn,key)=>TIMING.map((d,i)=>`${x(i)},${fn(d[key])}`).join(' ');svg.innerHTML=`<line x1="${l}" y1="${yD(100)}" x2="${w-r}" y2="${yD(100)}" stroke="#e5ebe5"/><text x="${l}" y="${yD(100)-5}" fill="#8b958d" font-size="9" font-family="DM Mono">100 baseline</text><polyline points="${pts(yD,'d')}" fill="none" stroke="#17221d" stroke-width="2.5"/><polyline points="${pts(yT,'t')}" fill="none" stroke="#69afbf" stroke-width="2" stroke-dasharray="4 4"/><line x1="${x(selected)}" y1="${t}" x2="${x(selected)}" y2="${h-b+2}" stroke="#83a832" stroke-dasharray="3 3"/>${TIMING.map((d,i)=>PROMOS[i+1]?`<circle cx="${x(i)}" cy="${yD(d.d)-8}" r="3" fill="#a65f45"/>`:``).join('')}${TIMING.map((d,i)=>`<text x="${x(i)}" y="${h-5}" text-anchor="middle" fill="#8b958d" font-size="9" font-family="DM Mono">${d.m}</text>`).join('')}`}
+
 document.querySelectorAll('#priceOptions button').forEach((button) => button.addEventListener('click', () => { state.price = Number(button.dataset.price); renderControls(); calculate(); }));
 ['dtc', 'retail', 'gym'].forEach((key) => $(`${key}Range`).addEventListener('input', (event) => { state.mix[key] = Number(event.target.value); normalizeMix(key); renderControls(); calculate(); }));
 document.querySelectorAll('#activationPills button').forEach((button) => button.addEventListener('click', () => { state.marketing = button.dataset.channel; document.querySelectorAll('#activationPills button').forEach((pill) => pill.classList.toggle('active', pill === button)); calculate(); }));
+if ($('launchMonth')) $('launchMonth').addEventListener('input', renderTiming);
 
 $('priceMatrix').addEventListener('click', (event) => { const cell = event.target.closest('.matrix-cell'); if (!cell) return; state.price = Number(cell.dataset.price); state.focusChannel = cell.dataset.channel; renderControls(); calculate(); });
 $('channelRows').addEventListener('click', (event) => { const row = event.target.closest('.channel-row'); if (!row) return; state.focusChannel = row.dataset.channel; calculate(); });
@@ -201,3 +208,4 @@ calculate();
 updateProductStage();
 
 $('applyBerlinMix').addEventListener('click', () => { state.mix = { dtc: 45, retail: 40, gym: 15 }; renderControls(); calculate(); });
+renderTiming();
