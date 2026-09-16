@@ -27,6 +27,7 @@
         </div>
       </header>
 
+      <nav class="page-tabs" aria-label="Decision areas"><button class="active" data-page-tab="plan">Plan</button><button data-page-tab="pricing">Pricing &amp; channels</button><button data-page-tab="timing">Timing</button><button data-page-tab="city">City launch</button></nav>
       <section class="product-stage" id="productStage" aria-label="LUMEN product presentation">
         <div class="stage-copy">
           <div class="eyebrow accent">A NEW KIND OF ENERGY</div>
@@ -66,7 +67,7 @@
         </div>
       </section>
 
-      <section class="hero-grid">
+      <section class="hero-grid page-section" data-page-section="plan">
         <div class="hero-copy">
           <div class="eyebrow accent">MARKET ENTRY / DE</div>
           <h2>Find the launch plan that keeps the brand premium <em>and</em> the runway intact.</h2>
@@ -255,12 +256,13 @@
         </section>
       </section>
 
-      <section class="timing-lab panel" id="timingLab">
+      <section class="timing-lab panel page-section" id="timingLab" data-page-section="timing">
         <div class="timing-intro"><span class="section-index">05 / Timing lab</span><h3>Catch the demand wave.</h3><p>Timing is not a date on a calendar. It is a short window where seasonal demand is rising, the shelf is quieter, and LUMEN has enough runway to learn.</p><div class="confidence-note"><span>i</span><p><strong>Evidence strength: directional.</strong> 12 monthly seasonality / weather observations and 48 competitor-month observations support the signal, not a forecast.</p></div></div>
         <div class="timing-control"><label for="launchMonth">Drag the launch window</label><input id="launchMonth" type="range" min="1" max="12" value="4"><div class="month-read"><strong id="launchMonthLabel">APRIL</strong><span id="launchSignal">Build momentum</span></div><div class="month-ticks"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div><div class="timing-chart-wrap"><svg id="timingChart" viewBox="0 0 620 150" role="img" aria-label="Monthly seasonality and temperature chart"></svg></div><div class="timing-legend"><span><i class="legend-line demand"></i>Demand index</span><span><i class="legend-line temp"></i>Temperature</span><span><i class="legend-promo"></i>Promo month</span></div></div>
         <div class="timing-readout"><div class="timing-score"><span>WINDOW SCORE</span><strong id="timingScore">84</strong><small>/100</small></div><div class="timing-reasons" id="timingReasons"></div><div class="promo-detail" id="promoDetail"></div></div>
         <div class="timing-verdict"><span class="verdict-mark" id="verdictMark">✓</span><div><span class="eyebrow">THE CALL</span><h4 id="timingVerdict">Launch in April: prime the market, then ride summer.</h4><p id="timingCopy">Demand is accelerating and competitors are not heavily discounting. This gives LUMEN a clean runway to build trial before the seasonal peak.</p><small class="timing-source">Sources: Exhibit 12 · <code>data/seasonality_and_weather.csv</code> (12 monthly observations); Exhibit 3 · <code>data/competitor_price_history.csv</code> (48 competitor-month observations).</small></div></div>
       </section>
+      <section class="city-lab panel" id="cityLab"><div class="city-heading"><span class="section-index">06 / City launch indicator</span><h3>Why Berlin first?</h3><p>Berlin is the best first learning market: the largest city sample, the strongest purchase intent, and a channel pattern that fits a retail-led launch with DTC support.</p></div><div class="city-tabs" role="tablist"><button class="active" data-city-tab="case">The case</button><button data-city-tab="segments">Target segments</button><button data-city-tab="playbook">Launch playbook</button></div><div class="city-panel-content" id="cityPanelContent"><div class="city-content-grid"><div class="city-stat"><span>Survey signal</span><strong>#1</strong><small>Largest named city sample: 81 respondents</small></div><div class="city-stat"><span>Purchase intent</span><strong>7.40 / 10</strong><small>Above Munich (7.30) and Cologne (7.04)</small></div><div class="city-stat"><span>Market tailwind</span><strong>18%</strong><small>Share of market · 9% regional CAGR</small></div></div><div class="city-source">Berlin is selected against named-city survey and market context benchmarks, not population alone. Source: Exhibits 1 &amp; 4.</div></div></section>
 
       <footer class="footer-note">
         <span>Source: GitHub data/price_test_results.csv · cost_breakdown.csv · marketing_funnel_monthly.csv</span>
