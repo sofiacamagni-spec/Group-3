@@ -145,38 +145,26 @@ function renderChart(weightedContribution, monthlyCustomers) {
 function calculate() {
   const test = PRICE_TESTS[state.price];
   const weightedContribution = Object.entries(state.mix).reduce((sum, [key, share]) => sum + (share / 100) * test.channels[key].contribution, 0);
-  const weightedMargin = Object.entries(state.mix).reduce((sum, [key, share]) => sum + (share / 100) * test.channels[key].margin, 0);
   const marketing = MARKETING[state.marketing];
   const ltvCac = marketing.ltv / marketing.cac;
-  const payback = marketing.cac / Math.max(weightedContribution * ASSUMPTIONS.unitsPerMonth, .01);
   const score = clamp(Math.round(test.score + (state.mix.dtc * 0.04) + (state.mix.retail * 0.03) - (state.mix.gym * 0.015) + (ltvCac - 3) * 4), 45, 92);
   const monthlyCustomers = ASSUMPTIONS.baselineCustomers * (test.acceptance / 51.7) * (0.78 + state.mix.retail / 300);
-  $('posture').textContent = test.posture;
-  $('postureDetail').textContent = test.detail;
-  $('blendedContribution').textContent = euro(weightedContribution);
-  $('marginText').textContent = `${weightedMargin.toFixed(1)}% margin`;
-  $('marginDelta').textContent = `${weightedMargin >= ASSUMPTIONS.homeMargin ? '+' : ''}${(weightedMargin - ASSUMPTIONS.homeMargin).toFixed(1)} pts vs home`;
-  $('acceptance').textContent = `${test.acceptance.toFixed(1)}%`;
-  $('acceptanceText').textContent = `${Math.round(test.acceptance / 10)} in 10 prospects`;
-  $('payback').textContent = `${payback.toFixed(1)} mo`;
-  $('ltvCac').textContent = `LTV:CAC ${ltvCac.toFixed(1)}×`;
   $('scoreValue').textContent = score;
   $('scoreBar').style.width = `${score}%`;
   document.querySelector('.score-ring').style.setProperty('--score', `${score}%`);
-  $('heroRead').textContent = `${test.posture} launch, built for learning.`;
-  $('heroSubread').textContent = state.price === 2.59 ? 'Protects margin, but asks the market to believe before it has tried.' : state.price === 1.79 ? 'Maximises trial, but makes the CFO pay for the learning curve.' : 'A premium enough price with a channel mix that earns the right to scale.';
   const primary = state.mix.retail >= state.mix.dtc && state.mix.retail >= state.mix.gym ? 'retail-led' : state.mix.dtc >= state.mix.gym ? 'digital-led' : 'gym-led';
   $('recommendationTitle').textContent = `Enter at ${euro(state.price)} with a ${primary}, ${state.marketing.toLowerCase()} test.`;
-  $('recommendationBody').textContent = state.price === 2.59 ? 'Use Gym & Office and DTC to carry the premium story, but keep the first wave intentionally narrow: the model shows a high-contribution path with a sharp acceptance penalty.' : state.price === 1.79 ? 'Use Retail / Grocery to create fast trial and let the team learn before moving price upward. The plan buys reach, but it deliberately gives away contribution to accelerate proof.' : 'Use Retail / Grocery to create trial and social proof, keep DTC close behind for higher contribution, and make the selected activation engine the first learning loop. This preserves premium cues while giving the CFO a credible payback path.';
+  $('recommendationBody').textContent = state.price === 2.59 ? 'Use Gym & Office and DTC to carry the premium story, but keep the first wave intentionally narrow: the model shows a high-contribution path with a sharp acceptance penalty.' : state.price === 1.79 ? 'Use Retail / Grocery to create fast trial and let the team learn before moving price upward. The plan buys reach, but it deliberately gives away contribution to accelerate proof.' : 'Use physical tasting for discovery and DTC for identifiable repeat orders. Treat the selected mix as a paid-unit hypothesis. Release further investment only when mature cohorts and actual contribution meet the agreed gates.';
   $('channelInsight').textContent = state.mix.gym > 30 ? 'Gym & Office protects contribution; Retail builds the funnel.' : state.mix.dtc > 40 ? 'DTC lifts contribution; keep Retail present for trial.' : 'Retail builds trial; DTC keeps the economics healthy.';
   $('berlinScenarioSummary').textContent = `Selected plan: ${euro(state.price)} per can · ${state.mix.dtc}% DTC / ${state.mix.retail}% retail / ${state.mix.gym}% Gym & Office · ${euro(weightedContribution)} contribution per can (case estimate).`;
   renderPriceMatrix();
   renderSelectedDetail(test);
   renderChannelRows(test);
   renderChart(weightedContribution, monthlyCustomers);
+  document.dispatchEvent(new Event("lumen:scenario"));
 }
 
-function renderTiming(){const i=Number($('launchMonth').value)-1,d=TIMING[i],promos=PROMOS[i+1]||[];let score=Math.round(d.d*.55+(d.t>=15?18:d.t>=10?14:8)-(d.p*7)+(i>=2&&i<=7?8:0));score=Math.min(96,Math.max(45,score));$('launchMonthLabel').textContent=d.m;$('launchSignal').textContent=d.s;$('timingScore').textContent=score;$('timingReasons').innerHTML=`<b>${d.d}</b> demand index<br><b>${d.t}°C</b> average temperature<br><b>${d.p?'Promo noise':'Clear shelf'}</b>`;$('promoDetail').innerHTML=promos.length?`<strong>${promos.length} competitor promo${promos.length>1?'s':''}</strong>${promos.map(([name,discount])=>`<div class="promo-item"><span>${name}</span><span>−${discount}</span></div>`).join('')}`:`<span class="promo-clear">✓ No tracked promotions</span><br>Clearer test signal`;$('timingVerdict').textContent=i===3?'Launch in April: prime the market, then ride summer.':i===4?'Launch in May: the cleanest demand-to-readiness window.':i>=5&&i<=7?`Launch in ${d.m}: capture the peak, but execute without delay.`:i<3?'Hold for spring: prepare partners and build the demand engine.':`Use ${d.m} as a controlled test, then scale into the next demand wave.`;$('timingCopy').textContent=d.c;$('verdictMark').textContent=score>=75?'✓':score>=60?'~':'!';renderTimingChart(i);}
+function renderTiming(){const i=Number($('launchMonth').value)-1,d=TIMING[i],promos=PROMOS[i+1]||[];let score=Math.round(d.d*.55+(d.t>=15?18:d.t>=10?14:8)-(d.p*7)+(i>=2&&i<=7?8:0));score=Math.min(96,Math.max(45,score));$('launchMonthLabel').textContent=d.m;$('launchSignal').textContent=d.s;$('timingScore').textContent=score;$('timingReasons').innerHTML=`<b>${d.d}</b> demand index<br><b>${d.t}°C</b> average temperature<br><b>${d.p?'Tracked promo month':'No tracked promo in case'}</b>`;$('promoDetail').innerHTML=promos.length?`<strong>${promos.length} competitor promo${promos.length>1?'s':''}</strong>${promos.map(([name,discount])=>`<div class="promo-item"><span>${name}</span><span>−${discount}</span></div>`).join('')}`:`<span class="promo-clear">✓ No tracked promotions</span><br>Future promotions unverified`;$('timingVerdict').textContent=i===3?'Launch in April: prime the market, then ride summer.':i===4?'Launch in May: the cleanest demand-to-readiness window.':i>=5&&i<=7?`Launch in ${d.m}: capture the peak, but execute without delay.`:i<3?'Hold for spring: prepare partners and build the demand engine.':`Use ${d.m} as a controlled test, then scale into the next demand wave.`;$('timingCopy').textContent=d.c;$('verdictMark').textContent=score>=75?'✓':score>=60?'~':'!';renderTimingChart(i);}
 function renderTimingChart(selected){const svg=$('timingChart'),w=620,h=150,l=20,r=8,t=10,b=25,x=i=>l+i*(w-l-r)/11,yD=v=>t+(138-v)/(138-70)*(h-t-b),yT=v=>t+(20-v)/20*(h-t-b),pts=(fn,key)=>TIMING.map((d,i)=>`${x(i)},${fn(d[key])}`).join(' ');svg.innerHTML=`<line x1="${l}" y1="${yD(100)}" x2="${w-r}" y2="${yD(100)}" stroke="#e5ebe5"/><text x="${l}" y="${yD(100)-5}" fill="#8b958d" font-size="9" font-family="DM Mono">100 baseline</text><polyline points="${pts(yD,'d')}" fill="none" stroke="#17221d" stroke-width="2.5"/><polyline points="${pts(yT,'t')}" fill="none" stroke="#69afbf" stroke-width="2" stroke-dasharray="4 4"/><line x1="${x(selected)}" y1="${t}" x2="${x(selected)}" y2="${h-b+2}" stroke="#83a832" stroke-dasharray="3 3"/>${TIMING.map((d,i)=>PROMOS[i+1]?`<circle cx="${x(i)}" cy="${yD(d.d)-8}" r="3" fill="#a65f45"/>`:``).join('')}${TIMING.map((d,i)=>`<text x="${x(i)}" y="${h-5}" text-anchor="middle" fill="#8b958d" font-size="9" font-family="DM Mono">${d.m}</text>`).join('')}`}
 
 document.querySelectorAll('#priceOptions button').forEach((button) => button.addEventListener('click', () => { state.price = Number(button.dataset.price); renderControls(); calculate(); }));
@@ -207,5 +195,5 @@ renderControls();
 calculate();
 updateProductStage();
 
-$('applyBerlinMix').addEventListener('click', () => { state.mix = { dtc: 45, retail: 40, gym: 15 }; renderControls(); calculate(); });
+$('applyBerlinMix').addEventListener('click', () => { state.price = 2.19; state.mix = { dtc: 45, retail: 40, gym: 15 }; state.marketing = 'Retail Sampling'; document.querySelectorAll('#activationPills button').forEach(b => b.classList.toggle('active', b.dataset.channel === state.marketing)); renderControls(); calculate(); });
 renderTiming();

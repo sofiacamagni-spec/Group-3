@@ -1,0 +1,37 @@
+[
+  {
+    "city": "Berlin",
+    "n": 27,
+    "intent": 9.1,
+    "sensitivity": 3.63,
+    "dtc": 17
+  },
+  {
+    "city": "Munich",
+    "n": 13,
+    "intent": 9.12,
+    "sensitivity": 3.57,
+    "dtc": 9
+  },
+  {
+    "city": "Hamburg",
+    "n": 13,
+    "intent": 9.61,
+    "sensitivity": 3.59,
+    "dtc": 7
+  },
+  {
+    "city": "Cologne",
+    "n": 16,
+    "intent": 8.96,
+    "sensitivity": 3.83,
+    "dtc": 7
+  },
+  {
+    "city": "Frankfurt",
+    "n": 6,
+    "intent": 8.3,
+    "sensitivity": 3.87,
+    "dtc": 4
+  }
+]

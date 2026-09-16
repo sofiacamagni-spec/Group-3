@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pilot.css" />
   </head>
   <body>
     <div class="ambient ambient-a"></div>
@@ -23,60 +24,22 @@
         </div>
         <div class="topbar-meta">
           <span class="status-dot"></span>
-          <span>Decision model · 2026 planning</span>
+          <span>CEO decision review · Berlin pilot 2027</span>
         </div>
       </header>
 
-      <section class="product-stage" id="productStage" aria-label="LUMEN product presentation">
-        <div class="stage-copy">
-          <div class="eyebrow accent">A NEW KIND OF ENERGY</div>
-          <h2>Light on sugar.<br /><span>Heavy on momentum.</span></h2>
-          <p class="stage-lede">A sparkling functional drink with natural caffeine from green tea and a light adaptogen blend — made for the moments when the day asks for more.</p>
-          <div class="stage-progress"><span class="stage-progress-bar" id="stageProgressBar"></span></div>
-          <div class="stage-hint"><span class="scroll-icon">↕</span><span>Scroll to explore the can</span></div>
-        </div>
-        <div class="stage-visual">
-          <div class="can-glow"></div>
-          <div class="can-shadow"></div>
-          <div class="can" id="heroCan" aria-label="LUMEN sparkling functional drink can">
-            <div class="can-top"></div>
-            <div class="can-body">
-              <div class="can-rings"></div>
-              <div class="can-label">
-                <div class="can-wordmark">LUMEN</div>
-                <div class="can-rule"></div>
-                <div class="can-category">SPARKLING<br />FUNCTIONAL</div>
-                <div class="can-orbit"><span>GREEN TEA</span><span>ADAPTOGEN BLEND</span></div>
-                <div class="can-flavour">CITRUS<br /><em>NO. 01</em></div>
-                <div class="can-spec">LOW SUGAR&nbsp; · &nbsp;NATURAL CAFFEINE</div>
-              </div>
-              <div class="can-label can-label-back" aria-hidden="true">
-                <div class="can-wordmark">LUMEN</div>
-                <div class="can-rule"></div>
-                <div class="can-category">RETURN<br />TO THE LIGHT</div>
-                <div class="can-flavour">DE<br /><em>NO. 01</em></div>
-                <div class="can-spec">SPARKLING FUNCTIONAL</div>
-              </div>
-              <div class="can-sheen"></div>
-            </div>
-            <div class="can-bottom"></div>
-          </div>
-          <div class="stage-side-note note-left"><span>01</span><strong>Clean energy</strong><small>without the crash</small></div>
-          <div class="stage-side-note note-right"><span>02</span><strong>Built for motion</strong><small>wherever the day goes</small></div>
-        </div>
-      </section>
 
-      <section class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow accent">MARKET ENTRY / DE</div>
-          <h2>Find the launch plan that keeps the brand premium <em>and</em> the runway intact.</h2>
-          <p>Explore the trade-off between acceptance, unit economics, and payback. Every control below updates the recommendation in real time.</p>
-        </div>
-        <div class="hero-note">
-          <span class="note-label">Model read</span>
-          <strong id="heroRead">Balanced launch, built for learning.</strong>
-          <span id="heroSubread">A premium enough price with a channel mix that earns the right to scale.</span>
-        </div>
+      <nav class="pilot-nav" aria-label="Decision sections"><a href="#ceo-decision">Decision</a><a href="#city-evidence">City fit</a><a href="#berlin-audience">Audience</a><a href="#commercial">Channels</a><a href="#pilot-plan">12-week plan</a><a href="#economics">Economics</a><a href="#pilot-map">Map</a></nav>
+      <section class="ceo-decision" id="ceo-decision">
+        <div><span class="pilot-kicker">GERMANY ENTRY / DECISION MEMO 01</span><h2>Berlin first.<br><em>Earn the right to expand.</em></h2><p>A 12-week pilot for wellness professionals: physical tasting for discovery, DTC for repeat demand.</p><div class="pilot-actions"><button id="applyPilot" type="button">Apply Berlin pilot scenario</button><a href="#economics">Review the investment ↓</a></div></div>
+        <aside class="decision-ticket"><span class="pilot-tag">RECOMMENDATION · NOT APPROVED</span><dl><div><dt>Price hypothesis</dt><dd>€2.19 / can</dd></div><div><dt>Paid-unit mix</dt><dd>45 / 40 / 15</dd></div><div><dt>Proposed start</dt><dd id="memoStart">03 May 2027</dd></div><div><dt>Pilot evidence</dt><dd>Not collected</dd></div></dl><p>Decision requested: fund preparation within an agreed cap. Release launch spending only after the readiness checks are verified.</p></aside>
+      </section>
+      <div class="evidence-legend"><span><i class="key case"></i>Case evidence</span><span><i class="key assumption"></i>Proposed assumption</span><span><i class="key pending"></i>Pilot results pending</span><span id="activePilotScenario" aria-live="polite"></span></div>
+      <section class="pilot-section" id="city-evidence">
+        <div class="pilot-section-head"><div><span class="pilot-kicker">CITY LAUNCH INDICATOR</span><h2>Attractive to test. Readiness unproven.</h2></div><span class="status-amber">CONDITIONAL PILOT</span></div>
+        <p class="section-lede">Berlin has the largest wellness sample among the named cities, with 17 of 27 preferring DTC. That supports a testable audience hypothesis; it does not establish Berlin as the best city or show profitable demand.</p>
+        <div class="decision-columns"><article><h3>What supports Berlin</h3><p>27 wellness respondents and strong stated intent. The case assigns Berlin an illustrative 18% regional market share and 9% growth assumption.</p><small>Case assumptions, not measured city market size.</small></article><article><h3>What is still missing</h3><p>Qualified partner access, local customer acquisition cost, delivery economics, paid conversion, retention, and a comparable operating-cost view for other cities.</p><small>City attractiveness and execution readiness are separate decisions.</small></article><article><h3>CEO implication</h3><p>Keep Berlin conditional. Compare executable partner offers in at least one alternative city before committing the full budget.</p><small>Hamburg has higher survey intent; Munich has slightly lower sensitivity.</small></article></div>
+        <details class="pilot-details"><summary>Compare city evidence and inspect the decision gaps</summary><div class="table-scroll"><table><caption>Urban Wellness Professionals only · synthetic survey · unweighted means</caption><thead><tr><th>City</th><th>Wellness n</th><th>Intent /10 ↑</th><th>Sensitivity /10 ↓</th><th>DTC preference</th></tr></thead><tbody id="cityRows"></tbody></table></div><p>No significance testing or representative sampling supports a rank. Differences between small samples should not determine investment alone. “Other Germany” is excluded because it is not one launch city.</p><div class="gap-list"><p><b>Commercial lead:</b> compare signed terms, partner capacity, and target-customer access by city.</p><p><b>Operations + finance:</b> quote inventory, cold/storage needs if applicable, replenishment, shipping, returns and cash timing.</p><p><b>Growth + analytics:</b> define the sampling denominator, buyer attribution, repeat windows and retention contribution.</p><p><b>CEO:</b> approve a cash cap, evidence thresholds and explicit stop conditions before launch.</p></div></details>
       </section>
 
       <section class="panel audience-panel" id="berlin-audience" aria-labelledby="audience-title">
@@ -86,9 +49,42 @@
         <p class="audience-caution">Synthetic Berlin survey: 81 respondents, including 27 wellness professionals. Directional evidence, not a sales forecast.</p>
         <div class="audience-decisions"><div><h3>Customer &amp; occasion</h3><p>Target wellness professionals with an existing premium beverage habit. Test LUMEN as a low-sugar sparkling alternative for an afternoon break, with caffeine from green tea.</p><span class="audience-label">Hypothesis to validate</span></div><div><h3>Commercial choice</h3><p>Use tasting to earn the first purchase and test online reordering. Fitness customers are a secondary audience. Prioritise focused premium demand over broad initial reach.</p><span class="audience-label">Team recommendation</span></div><div><h3>Before we expand</h3><p>Validate paid trial, 30- and 60-day repeat purchase, and customer contribution against acquisition cost. Agree success thresholds before the pilot.</p><span class="audience-label">Pilot results pending</span></div></div>
         <div class="audience-charts"><figure><figcaption><strong>Purchase intent</strong><span>Higher suggests more interest · scale 1–10</span></figcaption><div class="audience-bar audience-primary"><div><span>Urban Wellness Professionals</span><small>n=27</small></div><div class="audience-track" aria-hidden="true"><span style="width:90.9630%"></span></div><b>9.10</b></div><div class="audience-bar "><div><span>Fitness & Gym-Goers</span><small>n=14</small></div><div class="audience-track" aria-hidden="true"><span style="width:82.2857%"></span></div><b>8.23</b></div><div class="audience-bar "><div><span>On-the-go Commuters</span><small>n=19</small></div><div class="audience-track" aria-hidden="true"><span style="width:63.4211%"></span></div><b>6.34</b></div><div class="audience-bar "><div><span>Students & Budget-Conscious</span><small>n=21</small></div><div class="audience-track" aria-hidden="true"><span style="width:56.0476%"></span></div><b>5.60</b></div></figure><figure><figcaption><strong>Price sensitivity</strong><span>Lower suggests less sensitivity · scale 1–10</span></figcaption><div class="audience-bar audience-primary"><div><span>Urban Wellness Professionals</span><small>n=27</small></div><div class="audience-track" aria-hidden="true"><span style="width:36.3333%"></span></div><b>3.63</b></div><div class="audience-bar "><div><span>Fitness & Gym-Goers</span><small>n=14</small></div><div class="audience-track" aria-hidden="true"><span style="width:51.9286%"></span></div><b>5.19</b></div><div class="audience-bar "><div><span>On-the-go Commuters</span><small>n=19</small></div><div class="audience-track" aria-hidden="true"><span style="width:61.9474%"></span></div><b>6.19</b></div><div class="audience-bar "><div><span>Students & Budget-Conscious</span><small>n=21</small></div><div class="audience-track" aria-hidden="true"><span style="width:77.7143%"></span></div><b>7.77</b></div></figure></div>
-        <div class="audience-scenario"><div><h3>Connect the audience to the sales plan</h3><p id="berlinScenarioSummary" aria-live="polite"></p><small>Survey preferences remain fixed when you change the plan. They do not predict sales or price-specific conversion.</small></div><button type="button" id="applyBerlinMix">Try Berlin mix: 45 / 40 / 15</button></div>
+        <div class="audience-scenario"><div><h3>Connect the audience to the sales plan</h3><p id="berlinScenarioSummary" aria-live="polite"></p><small>Survey preferences remain fixed when you change the plan. They do not predict sales or price-specific conversion.</small></div><button type="button" id="applyBerlinMix">Apply €2.19 Berlin pilot</button></div>
         <details class="audience-method"><summary>Evidence, assumptions &amp; what to test</summary><p>Source: case Exhibit 4, customer_survey.csv. Filter: Berlin. Bars show arithmetic means by segment, with sample sizes; no population weighting. Only aggregate results are displayed. Intent and sensitivity use separate scales and are not combined into a city score.</p><p>The afternoon occasion is suggested by a case Exhibit 5 quote, not established by the survey. Interview customers about their existing drink, taste preferences and willingness to replace it. Validate the proposition with a paid purchase and later reorder opportunity.</p><p>A 12-pack at €2.19 costs €26.28, above the wellness segment’s mean reported monthly beverage spend of €21.90. Test a smaller trial commitment and delivery economics before choosing pack size.</p><p>The Berlin mix is a proposed share of paid units: 45% DTC, 40% retail, 15% Gym &amp; Office. It is not a marketing budget allocation. Contribution uses case Exhibit 11; the existing cockpit’s payback and scenario outputs are illustrative assumptions, not validated Berlin results.</p></details>
       </section>
+
+
+      <section class="pilot-section" id="commercial">
+        <div class="pilot-section-head"><div><span class="pilot-kicker">02 / PRICE & CHANNELS</span><h2>Trial in person. Reorder online.</h2></div><span class="pilot-tag">PROPOSED PLAN</span></div>
+        <div class="channel-strategy"><article><span class="channel-share">45<small>%</small></span><h3>DTC Online</h3><p>Partner-specific QR links connect tasting to first purchase and repeat orders. Test a 6-pack against a 12-pack; compare net contribution per order.</p><div class="channel-note">€1.16 case contribution / can</div></article><article><span class="channel-share">40<small>%</small></span><h3>Selected retail</h3><p>Use a small outlet set for paid discovery. Record weekly sell-through, stockouts and reorders; distribution alone is not evidence of demand.</p><div class="channel-note">€0.63 case contribution / can</div></article><article><span class="channel-share">15<small>%</small></span><h3>Gym & Office</h3><p>Test fitness as a secondary audience and the afternoon occasion through relevant partners. Keep its results separate from wellness-led acquisition.</p><div class="channel-note">€1.13 case contribution / can</div></article></div>
+        <p class="pilot-note">Shares refer to paid cans, not acquisition budgets. Figures above describe the proposed €2.19 case, while the live economics model below follows the shared cockpit controls.</p>
+        <div class="decision-columns"><article><h3>€2.19 is a test price</h3><p>National case acceptance is 51.7%, versus 26.7% at €2.59. Neither is a Berlin conversion forecast. Record price objections after tasting.</p></article><article><h3>Pack size is unresolved</h3><p>6 × €2.19 = €13.14; 12 × €2.19 = €26.28 before unconfirmed checkout treatment. The 12-pack exceeds the Berlin wellness sample’s €21.90 mean monthly beverage spend.</p></article><article><h3>Approve the checkout economics</h3><p>Validate tax, deposit, shipping, discounts and returns. The case already includes a €0.35 DTC fulfillment allowance per can; add only incremental costs beyond it.</p></article></div>
+      </section>
+      <section class="pilot-section" id="pilot-plan">
+        <div class="pilot-section-head"><div><span class="pilot-kicker">03 + 04 / EXECUTION & TIMING</span><h2>Twelve weeks to decide. Six weeks to prepare.</h2></div><label class="date-control">Pilot start date<input id="pilotStart" type="date" value="2027-05-03" min="2026-09-17" max="2029-12-31"></label></div>
+        <p class="section-lede">Proposed seasonal window: late April–May 2027, subject to readiness. The supplied German demand index climbs from 98 in April to 118 in May and 138 in July. It is a historical case pattern, not a Berlin 2027 forecast.</p>
+        <div class="timeline" id="pilotTimeline"></div>
+        <div class="pilot-timing-chart"><div><h3>Learn before the seasonal peak</h3><p id="pilotDates" aria-live="polite"></p><p id="seasonAdvice" class="pilot-note"></p></div><figure><div id="seasonBars" class="season-bars" aria-label="Monthly case demand index"></div><figcaption>Case demand index · 100 = reference level · selected launch month highlighted</figcaption></figure></div>
+        <div class="cohort-callout"><strong>A week-12 review cannot mature every customer cohort.</strong><p id="cohortCutoff"></p><p>Use fixed 30- and 60-day windows from each customer’s first paid order. Keep late cohorts labelled “not mature”; never count them as non-repeaters.</p></div>
+        <details class="pilot-details"><summary>Measurement contract and weekly operating rhythm</summary><p><b>Sampling:</b> count unique, consented participants separately from cans handed out. Match a participant token or QR attribution to a first paid purchase within 14 days; report unmatched purchases and attribution limitations separately.</p><p><b>Repeat:</b> distinct first-time buyers with at least one subsequent paid order in 30/60 days ÷ distinct first-time buyers with the full corresponding follow-up window. Exclude cancelled and fully refunded orders; do not count free replacements or subscriptions without a second paid order.</p><p><b>Acquisition economics:</b> allocate sampling, labor, venue, creative and paid-media costs to acquired first-time buyers by source. Compare cumulative contribution after variable costs and refunds with acquisition cost for the same mature cohort. Treat a zero-buyer source as unrecovered spend, not zero CAC.</p><p><b>Weekly cadence:</b> Growth reviews paid conversion; CRM reviews mature cohorts; Operations reviews units per active outlet-week, stockouts and replenishment; Finance reconciles costs and cash; the CEO decides at weeks 2, 6 and 12.</p><p><b>Data:</b> record dates, anonymous buyer ID, source, paid units, net revenue, variable costs, refunds and partner ID. Collect consent where required, limit access and retention, and keep personal details out of the CEO dashboard.</p></details>
+      </section>
+      <section class="pilot-section" id="economics">
+        <div class="pilot-section-head"><div><span class="pilot-kicker">05 / INVESTMENT & EXPANSION</span><h2>Make the recovery hurdle visible.</h2></div><span class="pilot-tag">EDITABLE ASSUMPTIONS</span></div>
+        <div class="economics-layout"><form id="pilotInputs" class="pilot-inputs" onsubmit="return false"><label>Non-product launch spend (€)<input id="launchSpend" type="number" value="8760" min="0" max="1000000" step="100"></label><small>Includes sampling labor, partners, creative, media, setup and contingency. Approve the allocation before launch.</small><label>Free sample cans<input id="sampleCans" type="number" value="2000" min="0" max="1000000" step="100"></label><small>At €0.62 case COGS each. Included once in the recovery hurdle.</small><label>Extra DTC cost per paid can (€)<input id="extraDtc" type="number" value="0" min="0" max="10" step="0.05"></label><small>Beyond case allowances. Zero means unverified, not cost-free.</small><label>Paid-can volume assumption<input id="paidCans" type="number" value="12000" min="0" max="1000000" step="100"></label><small>Planning input, not a demand forecast. Free samples are excluded.</small></form>
+        <div class="economics-results" aria-live="polite"><p id="economicsScenario"></p><div class="economics-primary"><div><span>Recovery spending</span><strong id="recoverySpend"></strong></div><div><span>Contribution / paid can</span><strong id="pilotContribution"></strong></div><div><span>Paid cans to recover</span><strong id="recoveryCans"></strong></div></div><div class="recovery-track"><span id="recoveryProgress"></span></div><p id="recoveryExplain"></p><div class="economics-secondary"><p id="volumeResult"></p><p id="channelVolume"></p></div><p class="pilot-note">Recovery is contribution-based, not cash payback. Timing of inventory payments, working capital, taxes, deposits and receivables requires a separate cash plan. No validated Berlin return is shown.</p></div></div>
+        <details class="pilot-details"><summary>Formula, cost boundaries and downside cases</summary><p>Weighted contribution = Σ(paid-unit channel share × case contribution) − DTC share × extra DTC cost. Recovery spending = non-product launch spend + sample cans × €0.62. Recovery units = round up(spending ÷ positive weighted contribution). If contribution is zero or negative, volume cannot recover the spending.</p><p>At €2.19 and 45/40/15: 0.45 × €1.16 + 0.40 × €0.63 + 0.15 × €1.13 = €0.9435. €10,000 ÷ €0.9435 requires 10,599 paid cans. At €0.30 extra DTC cost, contribution falls to €0.8085 and recovery needs 12,369 cans. At 20% lower contribution, the same €10,000 needs 13,249 cans. These are sensitivities, not probabilities.</p><p>Case contributions already subtract €0.62 COGS per paid can and stated channel allowances. Do not subtract them twice. Confirm extra partner fees, wastage, returns, discounts, storage and delivery through supplier quotes; only then approve the budget. Sample COGS is separate because samples produce no paid revenue.</p></details>
+        <div class="pilot-section-head gates-head"><div><h3>Proposed expansion gates</h3><p>Discussion targets to agree before launch. They are not case benchmarks or measured results.</p></div><span class="status-amber">ALL RESULTS PENDING</span></div>
+        <div class="table-scroll"><table class="gates-table"><thead><tr><th>Evidence</th><th>Proposed threshold</th><th>Definition / decision</th><th>Actual</th></tr></thead><tbody><tr><td>Sampling → paid trial</td><td>≥10% in 14 days</td><td>First paid buyers / attributable unique samplers. Aim for ≥200 fully observed participants; report tracking coverage.</td><td>Pending</td></tr><tr><td>Repeat purchase</td><td>≥20% at 30 days<br>≥30% at 60 days</td><td>At least 100 eligible DTC first buyers at each window. Show counts and uncertainty; this is an operational minimum, not statistical proof.</td><td>Pending</td></tr><tr><td>Acquisition recovery</td><td>60-day contribution / CAC ≥1.0</td><td>Same mature DTC cohort, fully allocated acquisition costs. Report channel and cohort differences.</td><td>Pending</td></tr><tr><td>Partner continuation</td><td>≥60% reorder within 30 days</td><td>Partners with a full 30-day follow-up; report absolute counts and weekly sell-through.</td><td>Pending</td></tr><tr><td>Financial discipline</td><td>Positive unit contribution<br>Within approved cash cap</td><td>Validate actual costs and cash runway; do not expand on survey intent alone.</td><td>Pending</td></tr></tbody></table></div>
+        <div class="decision-columns gate-decisions"><article><h3>Expand carefully</h3><p>Only when mature demand and contribution meet agreed gates, data is reliable, and fulfillment capacity is confirmed.</p></article><article><h3>Extend or adjust</h3><p>If evidence is too immature or too small, continue a capped follow-up. If one channel fails, isolate and retest the specific cause.</p></article><article><h3>Pause investment</h3><p>Stop acquisition at the cash cap or if corrected unit contribution is non-positive. Resolve product, cost or tracking failures before restarting.</p></article></div>
+      </section>
+      <section class="pilot-section" id="pilot-map">
+        <div class="pilot-section-head"><div><span class="pilot-kicker">COVERAGE / SCOUTING MAP</span><h2>Start compact. Verify every partner.</h2></div><span class="pilot-tag">NO CONFIRMED OUTLETS</span></div>
+        <p class="section-lede">Explore central Mitte and Friedrichshain as illustrative scouting areas. These map views are orientation aids, not validated catchments or evidence of neighbourhood demand. Choose two compact clusters only after partner access and route costs are checked.</p>
+        <div class="map-layout"><div><div class="map-tabs" aria-label="Map area"><button type="button" data-map="overview" aria-pressed="true">Berlin overview</button><button type="button" data-map="mitte" aria-pressed="false">Mitte</button><button type="button" data-map="friedrichshain" aria-pressed="false">Friedrichshain</button></div><iframe id="berlinMap" title="OpenStreetMap Berlin scouting area, no confirmed partner markers" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=13.34%2C52.48%2C13.49%2C52.56&amp;layer=mapnik" referrerpolicy="no-referrer"></iframe><p class="map-caption"><a id="mapExternal" href="https://www.openstreetmap.org/#map=13/52.52/13.415" target="_blank" rel="noopener">Open full map ↗</a> · © OpenStreetMap contributors. If the embedded map is unavailable, use the full-map link.</p></div><aside class="map-brief"><span class="pilot-kicker">PARTNER BRIEF</span><h3 id="mapTitle">Two compact clusters</h3><p id="mapDescription">Proposed starting capacity: 8 partners total, within a 6–10 partner range. Illustrative split: 6 retail + 2 Gym & Office. DTC serves reorders across the pilot.</p><ul><li>Verify wellness-audience access and tasting permission.</li><li>Agree margins, opening stock and weekly sales reporting.</li><li>Quote replenishment costs and define a named owner.</li><li>Assign a unique QR link; check first-sale attribution.</li></ul><p class="pilot-note">No addresses, signed partners, routes or service areas have been established.</p><p class="map-caption">Geographic context: <a href="https://www.visitberlin.de/en/districts/mitte">visitBerlin: Mitte</a> · <a href="https://www.berlin.de/en/districts/friedrichshain/">Berlin.de: Friedrichshain</a>. These sources do not validate commercial suitability.</p></aside></div>
+      </section>
+      <section class="pilot-section readiness-section" id="readiness"><div><span class="pilot-kicker">CEO SIGN-OFF TEMPLATE</span><h2>Release funds against evidence.</h2><p>This checklist is a meeting aid. Checking a box records a local draft declaration, not independent verification or approval. It resets on reload.</p><strong id="readinessResult" aria-live="polite">0 of 5 readiness checks declared complete</strong><p id="readinessAdvice">Hold launch funding until the evidence owners sign off.</p></div><div class="readiness-checks"><label><input type="checkbox">Commercial: 6–10 partners and two feasible clusters confirmed</label><label><input type="checkbox">Finance: cost quotes, checkout treatment, cash cap and runway approved</label><label><input type="checkbox">Operations: stock, quality, partner terms and replenishment ready</label><label><input type="checkbox">Growth: attribution and cohort reporting tested end to end</label><label><input type="checkbox">CEO: owners, thresholds, review dates and stop rules signed off</label></div></section>
+      <details class="pilot-details source-details"><summary>Sources, limitations and detailed analysis</summary><p>Case evidence: customer_survey.csv (city and segment means); market_context.csv (illustrative city shares and growth); price_test_results.csv and channel_economics.csv (price and contribution); cost_breakdown.csv (sample COGS); seasonality_and_weather.csv (national monthly patterns); customer_quotes.csv (occasion and taste hypotheses). Raw survey names and emails are not loaded by this page.</p><p>The inherited Timing lab is a directional national heuristic using a one-year case pattern; its score is not a calibrated probability or a city-launch readiness score. Untracked promotions and future conditions remain unknown. The general six-month cockpit scenario is not a Berlin sales forecast.</p><p><a href="BERLIN_PILOT_DECISION.md">Read the detailed city-launch gap analysis and pilot decision memo</a></p></details>
+      <div class="legacy-heading" id="scenario-controls"><span class="pilot-kicker">SHARED COCKPIT / SCENARIO EXPLORER</span><h2>Stress-test the commercial choice.</h2><p>Shared controls update the Berlin recovery model above. The inherited six-month chart and CAC assumptions remain illustrative national planning tools.</p></div>
 
       <section class="dashboard-grid">
         <aside class="panel controls-panel">
@@ -154,29 +150,6 @@
         </aside>
 
         <section class="main-stack">
-          <div class="metric-grid">
-            <div class="metric-card featured">
-              <span class="metric-label">Recommended posture</span>
-              <div class="metric-main" id="posture">Balanced</div>
-              <div class="metric-foot"><span class="signal signal-good"></span><span id="postureDetail">Strongest blend of reach and economics</span></div>
-            </div>
-            <div class="metric-card">
-              <span class="metric-label">Blended contribution</span>
-              <div class="metric-main" id="blendedContribution">€0.91</div>
-              <div class="metric-foot"><span id="marginText">58.4% margin</span><span class="metric-delta" id="marginDelta">+26.4 pts vs home</span></div>
-            </div>
-            <div class="metric-card">
-              <span class="metric-label">Est. acceptance</span>
-              <div class="metric-main" id="acceptance">51.7%</div>
-              <div class="metric-foot"><span id="acceptanceText">1 in 2 prospects</span><span class="metric-delta">survey signal</span></div>
-            </div>
-            <div class="metric-card">
-              <span class="metric-label">CAC payback</span>
-              <div class="metric-main" id="payback">4.1 mo</div>
-              <div class="metric-foot"><span id="ltvCac">LTV:CAC 3.0×</span><span class="metric-delta">target ≥ 3×</span></div>
-            </div>
-          </div>
-
           <article class="panel pricing-panel">
             <div class="panel-heading compact">
               <div>
@@ -258,7 +231,7 @@
             </div>
             <div class="decision-score">
               <div class="score-ring"><span id="scoreValue">78</span><small>/100</small></div>
-              <span>Balance score</span>
+              <span>Illustrative balance score</span>
               <div class="score-bar"><span id="scoreBar"></span></div>
               <small>Growth ↔ return</small>
             </div>
@@ -269,15 +242,57 @@
       <section class="timing-lab panel" id="timingLab">
         <div class="timing-intro"><span class="section-index">05 / Timing lab</span><h3>Catch the demand wave.</h3><p>Timing is not a date on a calendar. It is a short window where seasonal demand is rising, the shelf is quieter, and LUMEN has enough runway to learn.</p><div class="confidence-note"><span>i</span><p><strong>Evidence strength: directional.</strong> 12 monthly seasonality / weather observations and 48 competitor-month observations support the signal, not a forecast.</p></div></div>
         <div class="timing-control"><label for="launchMonth">Drag the launch window</label><input id="launchMonth" type="range" min="1" max="12" value="4"><div class="month-read"><strong id="launchMonthLabel">APRIL</strong><span id="launchSignal">Build momentum</span></div><div class="month-ticks"><span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div><div class="timing-chart-wrap"><svg id="timingChart" viewBox="0 0 620 150" role="img" aria-label="Monthly seasonality and temperature chart"></svg></div><div class="timing-legend"><span><i class="legend-line demand"></i>Demand index</span><span><i class="legend-line temp"></i>Temperature</span><span><i class="legend-promo"></i>Promo month</span></div></div>
-        <div class="timing-readout"><div class="timing-score"><span>WINDOW SCORE</span><strong id="timingScore">84</strong><small>/100</small></div><div class="timing-reasons" id="timingReasons"></div><div class="promo-detail" id="promoDetail"></div></div>
+        <div class="timing-readout"><div class="timing-score"><span>HEURISTIC SCORE</span><strong id="timingScore">84</strong><small>/100</small></div><div class="timing-reasons" id="timingReasons"></div><div class="promo-detail" id="promoDetail"></div></div>
         <div class="timing-verdict"><span class="verdict-mark" id="verdictMark">✓</span><div><span class="eyebrow">THE CALL</span><h4 id="timingVerdict">Launch in April: prime the market, then ride summer.</h4><p id="timingCopy">Demand is accelerating and competitors are not heavily discounting. This gives LUMEN a clean runway to build trial before the seasonal peak.</p><small class="timing-source">Sources: Exhibit 12 · <code>data/seasonality_and_weather.csv</code> (12 monthly observations); Exhibit 3 · <code>data/competitor_price_history.csv</code> (48 competitor-month observations).</small></div></div>
       </section>
 
+      <details class="pilot-details product-details"><summary>Product presentation</summary>
+      <section class="product-stage" id="productStage" aria-label="LUMEN product presentation">
+        <div class="stage-copy">
+          <div class="eyebrow accent">A NEW KIND OF ENERGY</div>
+          <h2>Light on sugar.<br /><span>Heavy on momentum.</span></h2>
+          <p class="stage-lede">A sparkling functional drink with natural caffeine from green tea and a light adaptogen blend — made for the moments when the day asks for more.</p>
+          <div class="stage-progress"><span class="stage-progress-bar" id="stageProgressBar"></span></div>
+          <div class="stage-hint"><span class="scroll-icon">↕</span><span>Scroll to explore the can</span></div>
+        </div>
+        <div class="stage-visual">
+          <div class="can-glow"></div>
+          <div class="can-shadow"></div>
+          <div class="can" id="heroCan" aria-label="LUMEN sparkling functional drink can">
+            <div class="can-top"></div>
+            <div class="can-body">
+              <div class="can-rings"></div>
+              <div class="can-label">
+                <div class="can-wordmark">LUMEN</div>
+                <div class="can-rule"></div>
+                <div class="can-category">SPARKLING<br />FUNCTIONAL</div>
+                <div class="can-orbit"><span>GREEN TEA</span><span>ADAPTOGEN BLEND</span></div>
+                <div class="can-flavour">CITRUS<br /><em>NO. 01</em></div>
+                <div class="can-spec">LOW SUGAR&nbsp; · &nbsp;NATURAL CAFFEINE</div>
+              </div>
+              <div class="can-label can-label-back" aria-hidden="true">
+                <div class="can-wordmark">LUMEN</div>
+                <div class="can-rule"></div>
+                <div class="can-category">RETURN<br />TO THE LIGHT</div>
+                <div class="can-flavour">DE<br /><em>NO. 01</em></div>
+                <div class="can-spec">SPARKLING FUNCTIONAL</div>
+              </div>
+              <div class="can-sheen"></div>
+            </div>
+            <div class="can-bottom"></div>
+          </div>
+          <div class="stage-side-note note-left"><span>01</span><strong>Clean energy</strong><small>without the crash</small></div>
+          <div class="stage-side-note note-right"><span>02</span><strong>Built for motion</strong><small>wherever the day goes</small></div>
+        </div>
+      </section>
+
+      </details>
       <footer class="footer-note">
         <span>Source: GitHub data/price_test_results.csv · cost_breakdown.csv · marketing_funnel_monthly.csv</span>
         <span>Prototype for decision support · Update assumptions as German learnings arrive</span>
       </footer>
     </main>
     <script src="app.js"></script>
+    <script src="pilot.js"></script>
   </body>
 </html>
