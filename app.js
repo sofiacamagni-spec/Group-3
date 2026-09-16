@@ -142,26 +142,13 @@ function renderChart(weightedContribution, monthlyCustomers) {
 function calculate() {
   const test = PRICE_TESTS[state.price];
   const weightedContribution = Object.entries(state.mix).reduce((sum, [key, share]) => sum + (share / 100) * test.channels[key].contribution, 0);
-  const weightedMargin = Object.entries(state.mix).reduce((sum, [key, share]) => sum + (share / 100) * test.channels[key].margin, 0);
   const marketing = MARKETING[state.marketing];
   const ltvCac = marketing.ltv / marketing.cac;
-  const payback = marketing.cac / Math.max(weightedContribution * ASSUMPTIONS.unitsPerMonth, .01);
   const score = clamp(Math.round(test.score + (state.mix.dtc * 0.04) + (state.mix.retail * 0.03) - (state.mix.gym * 0.015) + (ltvCac - 3) * 4), 45, 92);
   const monthlyCustomers = ASSUMPTIONS.baselineCustomers * (test.acceptance / 51.7) * (0.78 + state.mix.retail / 300);
-  $('posture').textContent = test.posture;
-  $('postureDetail').textContent = test.detail;
-  $('blendedContribution').textContent = euro(weightedContribution);
-  $('marginText').textContent = `${weightedMargin.toFixed(1)}% margin`;
-  $('marginDelta').textContent = `${weightedMargin >= ASSUMPTIONS.homeMargin ? '+' : ''}${(weightedMargin - ASSUMPTIONS.homeMargin).toFixed(1)} pts vs home`;
-  $('acceptance').textContent = `${test.acceptance.toFixed(1)}%`;
-  $('acceptanceText').textContent = `${Math.round(test.acceptance / 10)} in 10 prospects`;
-  $('payback').textContent = `${payback.toFixed(1)} mo`;
-  $('ltvCac').textContent = `LTV:CAC ${ltvCac.toFixed(1)}×`;
   $('scoreValue').textContent = score;
   $('scoreBar').style.width = `${score}%`;
   document.querySelector('.score-ring').style.setProperty('--score', `${score}%`);
-  $('heroRead').textContent = `${test.posture} launch, built for learning.`;
-  $('heroSubread').textContent = state.price === 2.59 ? 'Protects margin, but asks the market to believe before it has tried.' : state.price === 1.79 ? 'Maximises trial, but makes the CFO pay for the learning curve.' : 'A premium enough price with a channel mix that earns the right to scale.';
   const primary = state.mix.retail >= state.mix.dtc && state.mix.retail >= state.mix.gym ? 'retail-led' : state.mix.dtc >= state.mix.gym ? 'digital-led' : 'gym-led';
   $('recommendationTitle').textContent = `Enter at ${euro(state.price)} with a ${primary}, ${state.marketing.toLowerCase()} test.`;
   $('recommendationBody').textContent = state.price === 2.59 ? 'Use Gym & Office and DTC to carry the premium story, but keep the first wave intentionally narrow: the model shows a high-contribution path with a sharp acceptance penalty.' : state.price === 1.79 ? 'Use Retail / Grocery to create fast trial and let the team learn before moving price upward. The plan buys reach, but it deliberately gives away contribution to accelerate proof.' : 'Use Retail / Grocery to create trial and social proof, keep DTC close behind for higher contribution, and make the selected activation engine the first learning loop. This preserves premium cues while giving the CFO a credible payback path.';

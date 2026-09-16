@@ -26,7 +26,7 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
 h1 { margin: 2px 0 0; font-size: 16px; letter-spacing: -.03em; }
 .topbar-meta { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 11px; }
 .status-dot, .live-pill span { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: var(--lime-deep); box-shadow: 0 0 0 4px rgba(131,168,50,.12); }
-.hero-grid { display: grid; grid-template-columns: 1.48fr .62fr; gap: 50px; align-items: end; margin-bottom: 48px; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 50px; align-items: end; margin-bottom: 48px; }
 .accent { color: var(--lime-deep); font-weight: 600; }
 .hero-copy h2 { max-width: 780px; margin: 9px 0 15px; font-size: clamp(34px, 4.1vw, 59px); line-height: .99; letter-spacing: -.075em; font-weight: 700; }
 .hero-copy h2 em { color: #6c8e29; font-style: normal; }
